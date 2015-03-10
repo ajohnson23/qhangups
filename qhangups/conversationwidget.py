@@ -184,6 +184,10 @@ class QHangupsConversationWidget(QtGui.QWidget, Ui_QHangupsConversationWidget):
         finally:
             self.messageTextEdit.setEnabled(True)
             self.sendButton.setEnabled(True)
+            self.focus_message_text()
+
+    def focus_message_text(self):
+        self.messageTextEdit.setFocus();
 
     def on_disconnect(self):
         """Show that Hangups has disconnected from server (callback)"""

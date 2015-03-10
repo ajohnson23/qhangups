@@ -43,13 +43,14 @@ class QHangupsConversations(QtGui.QDialog, Ui_QHangupsConversations):
         """Add conversation tab (if not present) and optionally switch to it"""
         conv_widget = self.get_conv_widget(conv_id)
         conv_widget_id = self.conversationsTabWidget.indexOf(conv_widget)
-
         if switch:
             self.conversationsTabWidget.setCurrentWidget(conv_widget)
 
     def on_tab_current_changed(self, conv_widget_id):
         """Current tab changed (callback)"""
+        self.activateWindow()
         conv_widget = self.conversationsTabWidget.widget(conv_widget_id)
+        conv_widget.focus_message_text()
         if conv_widget:
             conv_widget.set_active()
 
